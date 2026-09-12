@@ -1,6 +1,6 @@
 [submodule "Multi-Layer-Anatomy-GS-Unity-Rendering"]
 	path = Multi-Layer-Anatomy-GS-Unity-Rendering
-	url = https://github.com/roth-hex-lab/Multi-Layer-Anatomy-GS-Unity-Rendering
+	url = https://github.com/Luckymcy/Multi-Layer-Anatomy-GS-Unity-Rendering.git
 [submodule "Multi-Layer-Anatomy-GS-Scripts"]
 	path = Multi-Layer-Anatomy-GS-Scripts
 	url = https://github.com/roth-hex-lab/Multi-Layer-Anatomy-GS-Scripts.git
