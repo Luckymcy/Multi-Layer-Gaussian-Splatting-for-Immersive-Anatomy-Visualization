@@ -13,7 +13,11 @@ The used code is available from multiple directories. For your convenience, they
 
 Check out the ones you need, or clone the target repositories directly.
 
-## Dataset and Models
+## Research fork workflow
+
+This fork also includes fixed-structure RGB LUT experiments and reusable real-image annotation preparation tools. See [the workflow and repository layout](docs/WORKFLOW.md) for current scope, required renderer patches, input conventions and limitations. Real-image adversarial LUT training is planned; it is not implemented in this snapshot. Local medical data, models and generated artifacts are excluded from Git.
+
+## Upstream dataset and models
 
 Dataset, trained models and evaluation results are available from the projects OSF page here: https://osf.io/tuwh5/ / DOI 10.17605/OSF.IO/TUWH5
 

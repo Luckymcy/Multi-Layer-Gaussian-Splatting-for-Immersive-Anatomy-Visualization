@@ -1,0 +1,36 @@
+# Local datasets and generated research artifacts (never publish by default)
+/data/
+/output/
+/archive/
+/手术视频/
+/masks/
+/NIfTI/
+/DSCor*/
+/teachers*/
+/WORKSPACE_INDEX.md
+/*.pdf
+
+# Downloaded installers and model weights; setup instructions remain versioned
+/assets/setup/model_weights/
+/assets/setup/installers/
+
+# Environment, editor, cache and build outputs
+.vscode/
+.idea/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+build/
+dist/
+*.egg-info/
+*.log
+*.tmp
+
+# Private configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
