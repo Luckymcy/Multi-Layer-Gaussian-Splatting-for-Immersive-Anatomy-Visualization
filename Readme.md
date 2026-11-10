@@ -15,7 +15,7 @@ Check out the ones you need, or clone the target repositories directly.
 
 ## Research fork workflow
 
-This fork also includes fixed-structure RGB LUT experiments and reusable real-image annotation preparation tools. See [the workflow and repository layout](docs/WORKFLOW.md) for current scope, required renderer patches, input conventions and limitations. Real-image adversarial LUT training is planned; it is not implemented in this snapshot. Local medical data, models and generated artifacts are excluded from Git.
+This fork also includes fixed-structure RGB LUT experiments and reusable real-image annotation preparation tools. See [the workflow and repository layout](docs/WORKFLOW.md) for current scope, required renderer patches, input conventions and limitations. Single-tissue adversarial LUT training has completed engineering checks and a 5000-step single-operation experiment; real-domain effectiveness is not established. Unity supports importing and comparing exported LUT JSON versions, with Editor validation still pending. Local medical data, models and generated artifacts are excluded from Git.
 
 ## Upstream dataset and models
 

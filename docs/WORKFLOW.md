@@ -24,7 +24,7 @@ The training submodule retains the original teacher-image fitting procedure and 
 
 ## 2. Shared RGB LUT
 
-`Multi-Layer-Anatomy-GS-Training/appearance_lut.py` learns a multi-control-point HU-to-RGB table per tissue. Geometry and opacity stay fixed; selected tissue RGB replaces its SH appearance. `validate_lut_render.py` checks the differentiable CUDA RGB path using a synthetic target and a short bounded run. See that repository's `experiments/README.md`.
+`Multi-Layer-Anatomy-GS-Training/appearance/lut.py` learns a multi-control-point HU-to-RGB table per tissue. Geometry and opacity stay fixed; selected tissue RGB replaces its SH appearance. Unit tests are grouped in `tests/`, and the current executable is `python run.py appearance train`. The earlier standalone synthetic comparison/validation driver has been removed; see `appearance/README.md` for current gradient checks and invocation.
 
 Fresh checkouts must apply the source patches documented in the training repository's `patches/README.md` before building the local rasterizer interface. Compiled extensions are not included.
 
@@ -39,11 +39,17 @@ python tools/annotations/prepare_fat_dataset.py --seed-dir /path/to/annotation_s
 
 See `tools/annotations/README.md` for input/output conventions. Geometry validity of a mask does not certify its tissue content. Candidate patches require visual acceptance; sampled frames from one operation do not form independent patients.
 
-## 4. Planned unpaired learning
+## 4. Unpaired LUT training
 
-An adversarial discriminator and a real-image LUT training loop are **not yet implemented in this snapshot**. The planned loop alternates discriminator updates with LUT-only updates through the shared differentiable Gaussian renderer. Real and rendered patches must match tissue, visible surface and scale; cross-patient pixelwise L1/SSIM is not appropriate.
+The training repository separates `geometry/`, `appearance/` and `evaluation/`, using `run.py` as a unified task dispatcher. `python run.py appearance train` alternates discriminator updates with LUT-only updates through the shared differentiable Gaussian renderer, with all-layer contribution masks for generated-patch selection, frozen-model checks and full-state resume. Engineering checks and a 5000-step single-operation experiment have completed; useful real-domain learning has not been established, and the candidate real patches remain pending visual acceptance. Real and rendered patches must match tissue, visible surface and scale; cross-patient pixelwise L1/SSIM is not appropriate.
 
 One tissue LUT is the first experiment. A LUT does not create independent spatial texture or uniquely separate lighting and material. Existing synthetic checks and teacher-fit metrics do not establish real-domain success, anatomical accuracy or cross-patient generalization.
+
+`tools/training/summarize_lut_run.py` creates loss/gradient plots, LUT curves and fixed-view comparisons from a run directory without modifying its inputs. Generated plots and checkpoints remain local.
+
+## 5. Unity LUT comparison
+
+The Unity package adds JSON import and a version selector to `GaussianSplatRenderer`, plus an optional desktop Game-view comparison panel. Exported `hu` and `final_linear_rgb` controls replace RGB only on the explicitly selected layer; selecting Original / manual restores the prior display settings. See [the Unity import guide](../Multi-Layer-Anatomy-GS-Unity-Rendering/docs/learned-lut-json.md). Parsing/interpolation checks passed with the actual exported JSON, but full Unity Editor/GPU/UI validation has not run on this machine.
 
 ## Checks and working environments
 
